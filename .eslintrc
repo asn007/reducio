@@ -1,0 +1,50 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "plugins": [
+    "import",
+    "react"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "comma-dangle": 0,
+    "global-require": "off",
+    "import/no-dynamic-require": "off",
+    "keyword-spacing": ["error", {
+      "before": true,
+      "after": true,
+      "overrides": {
+        "if": { "after": false },
+        "while": { "after": false },
+        "for": { "after": false },
+        "switch": { "after": false },
+        "default": { "after": false },
+        "return": { "after": true },
+        "throw": { "after": true },
+        "catch": { "after": false },
+        "case": { "after": true }
+      }
+    }],
+    "no-underscore-dangle": "off",
+    "no-plusplus": ["error", {
+      "allowForLoopAfterthoughts": true
+    }],
+    "array-bracket-spacing": [2, "always"],
+    "curly": ["error", "multi-or-nest"],
+    "space-before-function-paren": "off",
+    "max-len": ["error", {
+      "code": 120,
+      "tabWidth": 2,
+      "ignoreUrls": true
+    }],
+    "quotes": ["error", "single", {
+      "avoidEscape": true,
+      "allowTemplateLiterals": true
+    }],
+    "react/prop-types": ["error", { "ignore": ["theme"], "customValidators": [] }],
+    "react/forbid-prop-types": ["error", { "forbid": ["any"] }]
+  }
+}
