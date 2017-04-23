@@ -15,11 +15,10 @@ export default function createGeneralReducer(
     if(shouldActionInvocationPredicateBeInvoked)
       reducerTriggered = actionInvocationPredicate(action);
     else
-            reducerTriggered = !!actionInvocationPredicate;
+      reducerTriggered = !!actionInvocationPredicate;
 
     if(reducerTriggered) {
       let newState;
-
       // if this reducer is part of composed chain,
       // then we have no need to worry about cloning state,
       // since composeReducers does it for us
@@ -28,12 +27,10 @@ export default function createGeneralReducer(
       if(!__reducio__composed)
         newState = cloneDeep(state);
       else
-                newState = state;
-      const processedAction = actionProcessorPredicate(action);
-
+        newState = state;
+      const processedAction = actionProcessorPredicate(cloneDeep(action));
       return stateProcessorPredicate(newState, processedAction);
     }
-
     return state;
   };
 }
