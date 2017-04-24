@@ -1,4 +1,4 @@
 import composeReducers from './composeReducers';
-import createGeneralReducer from './createGeneralReducer';
+import createReducer from './createReducer';
 
-export { composeReducers, createGeneralReducer };
+export { composeReducers, createReducer };

@@ -7,7 +7,7 @@ export default function composeReducers() {
   return reducers.reduce(
     (previousReducer, currentReducer) => (
       // true to indicate that this function is composed,
-      // so reducers created by createGeneralReducer will not create new state for each and everybody,
+      // so reducers created by createReducer will not create new state for each and everybody,
       // only first one, provided by composeReducers will
       (state, action) =>
         currentReducer(previousReducer(state, action, true), action, true)

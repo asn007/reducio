@@ -4,28 +4,28 @@ const chai = require('chai');
 
 const assert = chai.assert;
 
-import createGeneralReducer from '../src/createGeneralReducer';
+import createReducer from '../src/createReducer';
 
-describe('createGeneralReducer', () => {
+describe('createReducer', () => {
 
   it('should return a function accepting two arguments', () => {
-    assert.equal(createGeneralReducer().length, 2);
+    assert.equal(createReducer().length, 2);
   });
 
   it('generated reducer should return a new copy of state', () => {
-    const reducer = createGeneralReducer();
+    const reducer = createReducer();
     const state = { key: 'test' };
     assert.notEqual(reducer(state, {}), state);
   });
 
   it('generated reducer should not clone state when third argument is set to true', () => {
-    const reducer = createGeneralReducer();
+    const reducer = createReducer();
     const state = { key: 'test' };
     assert.equal(reducer(state, {}, true), state);
   });
 
   it('generated reducer should perform state modification', () => {
-    const reducer = createGeneralReducer(true, (state, action) => {
+    const reducer = createReducer(true, (state, action) => {
       state['result'] = action.copy;
       return state;
     });
@@ -34,7 +34,7 @@ describe('createGeneralReducer', () => {
   });
 
   it('generated reducer should only be invoked when specific predicate is true', () => {
-    const reducer = createGeneralReducer(false, (state, action) => {
+    const reducer = createReducer(false, (state, action) => {
       state['result'] = action.copy;
       return state;
     });
@@ -43,7 +43,7 @@ describe('createGeneralReducer', () => {
   });
 
   it('generated reducer should be invoked when specific predicate is function and returns true when called with action', () => {
-    const reducer = createGeneralReducer(action => action.shouldInvoke, (state, action) => {
+    const reducer = createReducer(action => action.shouldInvoke, (state, action) => {
       state['result'] = action.copy;
       return state;
     });
@@ -52,7 +52,7 @@ describe('createGeneralReducer', () => {
   });
 
   it('generated reducer should not invoke when specific predicate is function and returns false', () => {
-    const reducer = createGeneralReducer(action => action.shouldInvoke, (state, action) => {
+    const reducer = createReducer(action => action.shouldInvoke, (state, action) => {
       state['result'] = action.copy;
       return state;
     });
@@ -61,7 +61,7 @@ describe('createGeneralReducer', () => {
   });
 
   it('should accept action transformation predicate and transform action', () => {
-    const reducer = createGeneralReducer(true, (state, action) => {
+    const reducer = createReducer(true, (state, action) => {
       state['result'] = action.copy;
       assert.equal(action.invalid, true);
       return state;
