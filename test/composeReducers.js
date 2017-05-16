@@ -1,11 +1,9 @@
 /* eslint-disable */
-
-const chai = require('chai');
-
-const assert = chai.assert;
-
+import chai from 'chai';
 import composeReducers from '../src/composeReducers';
 
+
+const assert = chai.assert;
 
 describe('composeReducers', () => {
   it('should perform left to right function composition', () => {
@@ -15,16 +13,4 @@ describe('composeReducers', () => {
   it('should pass third argument to every reducer as true', () => {
     composeReducers((state, action, third) => assert.equal(third, true))();
   });
-
-  it('should keep same state instance over reducers', () => {
-    let st;
-    composeReducers(
-      state => {
-        st = state;
-        return state;
-      },
-      state => assert.equal(st, state)
-    )({})
-  })
-
 });

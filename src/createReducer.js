@@ -18,19 +18,10 @@ export default function createGeneralReducer(
       reducerTriggered = !!actionInvocationPredicate;
 
     if(reducerTriggered) {
-      let newState;
-      // if this reducer is part of composed chain,
-      // then we have no need to worry about cloning state,
-      // since composeReducers does it for us
-
-      // eslint-disable-next-line
-      if(!__reducio__composed)
-        newState = cloneDeep(state);
-      else
-        newState = state;
       const processedAction = actionProcessorPredicate(cloneDeep(action));
-      return stateProcessorPredicate(newState, processedAction);
+      return stateProcessorPredicate(state, processedAction, __reducio__composed);
     }
+
     return state;
   };
 }

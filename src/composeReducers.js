@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash.clonedeep';
+
 
 export default function composeReducers() {
   // eslint-disable-next-line
@@ -12,6 +12,6 @@ export default function composeReducers() {
       (state, action) =>
         currentReducer(previousReducer(state, action, true), action, true)
     ),
-    state => cloneDeep(state)
+    state => state
   );
 }

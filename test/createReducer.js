@@ -1,27 +1,14 @@
 /* eslint-disable */
+import chai from 'chai';
+import createReducer from '../src/createReducer';
 
-const chai = require('chai');
 
 const assert = chai.assert;
-
-import createReducer from '../src/createReducer';
 
 describe('createReducer', () => {
 
   it('should return a function accepting two arguments', () => {
     assert.equal(createReducer().length, 2);
-  });
-
-  it('generated reducer should return a new copy of state', () => {
-    const reducer = createReducer();
-    const state = { key: 'test' };
-    assert.notEqual(reducer(state, {}), state);
-  });
-
-  it('generated reducer should not clone state when third argument is set to true', () => {
-    const reducer = createReducer();
-    const state = { key: 'test' };
-    assert.equal(reducer(state, {}, true), state);
   });
 
   it('generated reducer should perform state modification', () => {
