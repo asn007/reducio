@@ -52,7 +52,7 @@ describe('createReducer', () => {
       state['result'] = action.copy;
       assert.equal(action.invalid, true);
       return state;
-    }, action => Object.assign({}, action, { invalid: true }));
+    }, action => ({ invalid: true }));
     const state = { key: 'test' };
     assert.equal(reducer(state, {copy: 'success', shouldInvoke: true}, true).result, 'success');
   });

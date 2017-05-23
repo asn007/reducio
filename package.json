@@ -28,9 +28,6 @@
     "url": "https://github.com/asn007/reducio/issues"
   },
   "homepage": "https://github.com/asn007/reducio#readme",
-  "dependencies": {
-    "lodash.clonedeep": "^4.5.0"
-  },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",

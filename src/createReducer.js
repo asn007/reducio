@@ -1,5 +1,3 @@
-import cloneDeep from 'lodash.clonedeep';
-
 export default function createGeneralReducer(
   actionInvocationPredicate = true,
   // eslint-disable-next-line
@@ -18,7 +16,8 @@ export default function createGeneralReducer(
       reducerTriggered = !!actionInvocationPredicate;
 
     if(reducerTriggered) {
-      const processedAction = actionProcessorPredicate(cloneDeep(action));
+      const processedAction = Object.assign({}, action, actionProcessorPredicate(action));
+
       return stateProcessorPredicate(state, processedAction, __reducio__composed);
     }
 
