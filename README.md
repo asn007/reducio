@@ -1,8 +1,6 @@
 reducio
 =======
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/611d380ea49c42acb5d87a50f55babd8)](https://www.codacy.com/app/asn007/reducio?utm_source=github.com&utm_medium=referral&utm_content=asn007/reducio&utm_campaign=badger)
-
 A library for getting rid of switch-case boilerplate in redux reducers
 
 ## How does it help me
